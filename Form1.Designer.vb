@@ -43,6 +43,7 @@ Partial Class Form1
         Me.Label6 = New System.Windows.Forms.Label()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.btndisplay = New System.Windows.Forms.Button()
+        Me.btnClose = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -56,7 +57,7 @@ Partial Class Form1
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(75, 58)
+        Me.GroupBox1.Location = New System.Drawing.Point(40, 58)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(302, 286)
         Me.GroupBox1.TabIndex = 0
@@ -131,7 +132,7 @@ Partial Class Form1
         Me.GroupBox2.Controls.Add(Me.Label4)
         Me.GroupBox2.Controls.Add(Me.Label5)
         Me.GroupBox2.Controls.Add(Me.Label6)
-        Me.GroupBox2.Location = New System.Drawing.Point(559, 58)
+        Me.GroupBox2.Location = New System.Drawing.Point(366, 58)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(302, 286)
         Me.GroupBox2.TabIndex = 1
@@ -218,19 +219,30 @@ Partial Class Form1
         '
         'btndisplay
         '
-        Me.btndisplay.Location = New System.Drawing.Point(263, 370)
+        Me.btndisplay.Location = New System.Drawing.Point(297, 365)
         Me.btndisplay.Name = "btndisplay"
         Me.btndisplay.Size = New System.Drawing.Size(114, 40)
         Me.btndisplay.TabIndex = 2
         Me.btndisplay.Text = "Display by Course"
         Me.btndisplay.UseVisualStyleBackColor = True
         '
+        'btnClose
+        '
+        Me.btnClose.Location = New System.Drawing.Point(591, 409)
+        Me.btnClose.Name = "btnClose"
+        Me.btnClose.Size = New System.Drawing.Size(77, 40)
+        Me.btnClose.TabIndex = 3
+        Me.btnClose.Text = "Exit"
+        Me.btnClose.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Azure
-        Me.ClientSize = New System.Drawing.Size(1038, 461)
+        Me.ClientSize = New System.Drawing.Size(699, 461)
+        Me.ControlBox = False
+        Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.btndisplay)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -264,4 +276,5 @@ Partial Class Form1
     Friend WithEvents Label7 As Label
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents btndisplay As Button
+    Friend WithEvents btnClose As Button
 End Class

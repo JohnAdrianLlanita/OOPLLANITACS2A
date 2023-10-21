@@ -27,7 +27,7 @@ Module Module1
 
             Try
                 con.Open()
-                MessageBox.Show("Connected!")
+                ' MessageBox.Show("Connected!")
             Catch ex As Exception
 
             End Try
@@ -110,9 +110,46 @@ Module Module1
         Catch ex As Exception
             MsgBox(ex.Message)
         Finally
-            'con.Close()
+            con.Close()
+        End Try
+    End Sub
+    Public Sub LoadCourse()
+        sqlquery = "SELECT * FROM students"
+        Try
+            mysqlcmd = New MySqlCommand(sqlquery, con)
+            reader = mysqlcmd.ExecuteReader
+            While reader.Read()
+                Form2.cboCourse.Items.Add(reader("course").ToString)
+            End While
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            con.Close()
         End Try
     End Sub
 
+    Public Sub DisplayData(kurso As String)
+        sqlquery = "SELECT * FROM students WHERE course = @kurso"
+        adapter = New MySqlDataAdapter(sqlquery, con)
+        adapter.SelectCommand.Parameters.AddWithValue("@kurso", kurso)
+        Try
+            dbTable = New DataTable
+            adapter.Fill(dbTable)
+            With Form2.dgvData
+                .DataSource = dbTable
+                .AutoResizeColumns()
 
+            End With
+
+
+            'display the record data grid view
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            con.Close()
+        End Try
+    End Sub
 End Module
