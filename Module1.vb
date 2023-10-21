@@ -1,4 +1,5 @@
-﻿Imports System.Security.Cryptography.X509Certificates
+﻿Imports System.Data.Common
+Imports System.Security.Cryptography.X509Certificates
 Imports System.Windows.Forms.Design
 Imports K4os.Compression.LZ4.Streams
 Imports MySql.Data.MySqlClient
@@ -10,6 +11,9 @@ Module Module1
     Dim mysqlcmd As New MySqlCommand
     Dim host, uname, pwd, dbname As String
     Dim sqlquery As String
+    Dim dbTable As New DataTable
+    Dim adapter As New MySqlDataAdapter
+
 
     Public Sub ConnectDbase()
         host = "127.0.0.1"
@@ -86,5 +90,29 @@ Module Module1
         End Try
 
     End Sub
+
+    Public Sub LoadAllData()
+        sqlquery = "SELECT * FROM students"
+        adapter = New MySqlDataAdapter(sqlquery, con)
+        Try
+            dbTable = New DataTable
+            adapter.Fill(dbTable)
+            With Form2.dgvData
+                .DataSource = dbTable
+                .AutoResizeColumns()
+
+            End With
+
+
+            'display the record data grid view
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        Finally
+            'con.Close()
+        End Try
+    End Sub
+
 
 End Module
